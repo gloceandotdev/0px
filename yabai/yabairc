@@ -1,0 +1,59 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Set the default tiling option to bsp (floating also available)
+yabai -m config layout bsp
+
+# 2pt of padding is exactly one 4px border, so windows sit flush with the bar and the
+# screen edges. The 5pt gap is two borders plus a hairline of desktop between windows.
+yabai -m config top_padding    2
+yabai -m config bottom_padding 2
+yabai -m config left_padding   2
+yabai -m config right_padding  2
+yabai -m config window_gap     5
+
+# Turn auto balance on or off (default: off)
+# Auto balance tries to keep all windows around the same size. probably keep it off, it's janky
+yabai -m config auto_balance off
+
+# Set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier fn
+
+# Set modifier + left-click drag to move window (default: move)
+yabai -m config mouse_action1 move
+
+# Set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+
+# Set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config focus_follows_mouse autoraise
+
+# Set mouse follows focus mode (default: off)
+yabai -m config mouse_follows_focus off
+
+# Modify window shadows (default: on, options: on, off, float)
+yabai -m config window_shadow off
+
+# Skip some window focus animations. Keep off if using the scripting addition.
+yabai -m config skip_window_focus_animation off
+
+# Add exceptions to tiling
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^java$" manage=off
+yabai -m rule --add app="^Claude$" manage=off
+
+# Keep the bar in sync (custom events declared in sketchybar/sketchybarrc)
+yabai -m signal --add event=space_created         action="sketchybar --trigger spaces_update"
+yabai -m signal --add event=space_destroyed       action="sketchybar --trigger spaces_update"
+yabai -m signal --add event=window_focused        action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_title_changed  action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_destroyed      action="sketchybar --trigger window_focus"
+
+# Jankyborders
+borders active_color=0xff575279 inactive_color=0xff9893a5 width=4.0 style=square hidpi=on
+
+# Add padding for Sketchybar on the main display only (height must match sketchybar/sketchybarrc)
+yabai -m config external_bar main:41:0
+# The same as above, but for all displays instead
+# yabai -m config external_bar all:41:0

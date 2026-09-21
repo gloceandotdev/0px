@@ -1,0 +1,23 @@
+theme = light:Rose Pine Dawn,dark:Rose Pine
+
+font-family = DepartureMono Nerd Font
+font-size = 13
+
+font-synthetic-style = false
+bold-is-bright = true
+
+background-opacity = 1
+background-blur = false
+
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+
+window-decoration = none
+macos-window-shadow = false
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+term = xterm-256color

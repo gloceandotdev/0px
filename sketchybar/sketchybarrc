@@ -1,0 +1,159 @@
+#!/bin/bash
+# 0px — a flat, dwm-style bar. One font, text only, no icons.
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+# Load theme colors (switched by ~/.config/switch-theme.sh)
+source "$CONFIG_DIR/colors.sh"
+
+FONT="DepartureMono Nerd Font"
+SIZE=14.0
+HEIGHT=41 # matches the MacBook notch; keep in sync with external_bar in yabai/yabairc
+
+# Bar: opaque, square, flush with the top edge
+sketchybar --bar position=top \
+               height=$HEIGHT \
+               color="$COLOR_BASE" \
+               corner_radius=0 \
+               y_offset=0 \
+               margin=0 \
+               padding_left=0 \
+               padding_right=0 \
+               blur_radius=0 \
+               shadow=off \
+               display=main \
+               topmost=off
+
+# Item defaults: module name goes in the (dim) icon, its value in the label
+sketchybar --default \
+           padding_left=0 \
+           padding_right=0 \
+           icon.font="$FONT:Regular:$SIZE" \
+           icon.color="$COLOR_SUBTLE" \
+           icon.padding_left=6 \
+           icon.padding_right=0 \
+           label.font="$FONT:Regular:$SIZE" \
+           label.color="$COLOR_TEXT" \
+           label.padding_left=8 \
+           label.padding_right=6 \
+           background.drawing=off \
+           background.corner_radius=0 \
+           background.height=$HEIGHT
+
+# Custom events, fired by yabai signals (see yabai/yabairc)
+sketchybar --add event spaces_update \
+           --add event window_focus
+
+# sketchybar draws every item in its own window above the bar window. Clicking the bar
+# raises the bar window over them, and with an opaque bar that hides everything. Moving a
+# visible item makes sketchybar restack, so plugins/restack.sh swaps two invisible 1pt
+# pads whenever a click could have happened.
+sketchybar --add item pad.1 right \
+           --add item pad.2 right \
+           --set /pad\..*/ width=1 \
+                          icon.drawing=off \
+                          label.drawing=off \
+           --add item restack left \
+           --set restack drawing=off \
+                         script="$PLUGIN_DIR/restack.sh" \
+           --subscribe restack mouse.exited.global front_app_switched space_change
+
+# --- Left: tags, layout, focused window ---
+
+# Tags: one per space, drawn by plugins/spaces.sh
+for sid in 1 2 3 4 5 6 7 8 9 10; do
+  sketchybar --add item space.$sid left \
+             --set space.$sid label="$sid" \
+                              icon.drawing=off \
+                              label.padding_left=7 \
+                              label.padding_right=7 \
+                              click_script="yabai -m space --focus $sid"
+done
+
+# Layout of the focused space; click switches every space between bsp and float
+sketchybar --add item layout left \
+           --set layout icon.drawing=off \
+                        label.padding_left=10 \
+                        click_script="$PLUGIN_DIR/layout.sh"
+
+# One watcher redraws the tags and the layout label from a single yabai query
+sketchybar --add item spaces_watcher left \
+           --set spaces_watcher drawing=off \
+                                script="$PLUGIN_DIR/spaces.sh" \
+           --subscribe spaces_watcher space_change space_windows_change display_change front_app_switched spaces_update
+
+# Focused window: app name, then its title
+sketchybar --add item title left \
+           --set title icon.color="$COLOR_TEXT" \
+                       icon.padding_left=10 \
+                       label.color="$COLOR_SUBTLE" \
+                       script="$PLUGIN_DIR/title.sh" \
+           --subscribe title front_app_switched window_focus space_change
+
+# --- Right: status text. Added rightmost first ---
+
+sep() {
+  sketchybar --add item sep.$1 right \
+             --set sep.$1 label="|" \
+                          icon.drawing=off \
+                          label.color="$COLOR_MUTED" \
+                          label.padding_left=2 \
+                          label.padding_right=2
+}
+
+sketchybar --add item date right \
+           --set date icon.drawing=off \
+                      label.padding_right=6 \
+                      script="$PLUGIN_DIR/date.sh" \
+           --subscribe date system_woke
+
+sep 1
+
+# Weather needs an OpenWeather API key in sketchybar/sketchybar_env (see README)
+sketchybar --add item weather right \
+           --set weather update_freq=600 \
+                         script="$PLUGIN_DIR/weather.sh" \
+           --subscribe weather system_woke
+
+sep 2
+
+# Click toggles Low Power Mode (needs the pmset sudoers entry from setup.sh)
+sketchybar --add item battery right \
+           --set battery icon=bat \
+                         update_freq=20 \
+                         script="$PLUGIN_DIR/battery.sh" \
+                         click_script="$PLUGIN_DIR/battery_click.sh" \
+           --subscribe battery system_woke power_source_change
+
+sep 3
+
+sketchybar --add item volume right \
+           --set volume icon=vol \
+                        script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change
+
+sep 4
+
+sketchybar --add item lan right \
+           --set lan label=lan \
+                     icon.drawing=off \
+                     update_freq=10 \
+                     script="$PLUGIN_DIR/lan.sh" \
+           --subscribe lan system_woke
+
+sketchybar --add item vpn right \
+           --set vpn label=vpn \
+                     icon.drawing=off \
+                     update_freq=10 \
+                     script="$PLUGIN_DIR/vpn.sh" \
+           --subscribe vpn system_woke
+
+sep 5
+
+sketchybar --add item wifi right \
+           --set wifi icon=wlan \
+                      update_freq=2 \
+                      script="$PLUGIN_DIR/wifi.sh" \
+           --subscribe wifi wifi_change system_woke
+
+sketchybar --update
