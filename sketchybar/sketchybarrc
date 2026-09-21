@@ -1,5 +1,4 @@
 #!/bin/bash
-# 0px — a flat, dwm-style bar. One font, text only, no icons.
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
@@ -8,9 +7,8 @@ source "$CONFIG_DIR/colors.sh"
 
 FONT="DepartureMono Nerd Font"
 SIZE=14.0
-HEIGHT=41 # matches the MacBook notch; keep in sync with external_bar in yabai/yabairc
+HEIGHT=41
 
-# Bar: opaque, square, flush with the top edge
 sketchybar --bar position=top \
                height=$HEIGHT \
                color="$COLOR_BASE" \
@@ -24,7 +22,6 @@ sketchybar --bar position=top \
                display=main \
                topmost=off
 
-# Item defaults: module name goes in the (dim) icon, its value in the label
 sketchybar --default \
            padding_left=0 \
            padding_right=0 \
@@ -44,10 +41,6 @@ sketchybar --default \
 sketchybar --add event spaces_update \
            --add event window_focus
 
-# sketchybar draws every item in its own window above the bar window. Clicking the bar
-# raises the bar window over them, and with an opaque bar that hides everything. Moving a
-# visible item makes sketchybar restack, so plugins/restack.sh swaps two invisible 1pt
-# pads whenever a click could have happened.
 sketchybar --add item pad.1 right \
            --add item pad.2 right \
            --set /pad\..*/ width=1 \
@@ -60,7 +53,6 @@ sketchybar --add item pad.1 right \
 
 # --- Left: tags, layout, focused window ---
 
-# Tags: one per space, drawn by plugins/spaces.sh
 for sid in 1 2 3 4 5 6 7 8 9 10; do
   sketchybar --add item space.$sid left \
              --set space.$sid label="$sid" \
@@ -70,19 +62,16 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
                               click_script="yabai -m space --focus $sid"
 done
 
-# Layout of the focused space; click switches every space between bsp and float
 sketchybar --add item layout left \
            --set layout icon.drawing=off \
                         label.padding_left=10 \
                         click_script="$PLUGIN_DIR/layout.sh"
 
-# One watcher redraws the tags and the layout label from a single yabai query
 sketchybar --add item spaces_watcher left \
            --set spaces_watcher drawing=off \
                                 script="$PLUGIN_DIR/spaces.sh" \
            --subscribe spaces_watcher space_change space_windows_change display_change front_app_switched spaces_update
 
-# Focused window: app name, then its title
 sketchybar --add item title left \
            --set title icon.color="$COLOR_TEXT" \
                        icon.padding_left=10 \
@@ -109,7 +98,6 @@ sketchybar --add item date right \
 
 sep 1
 
-# Weather needs an OpenWeather API key in sketchybar/sketchybar_env (see README)
 sketchybar --add item weather right \
            --set weather update_freq=600 \
                          script="$PLUGIN_DIR/weather.sh" \
@@ -117,7 +105,6 @@ sketchybar --add item weather right \
 
 sep 2
 
-# Click toggles Low Power Mode (needs the pmset sudoers entry from setup.sh)
 sketchybar --add item battery right \
            --set battery icon=bat \
                          update_freq=20 \
