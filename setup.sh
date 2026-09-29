@@ -65,10 +65,10 @@ echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 "$YABAI_PATH" | cut 
     | sudo tee "$SUDOERS_FILE" >/dev/null
 sudo chmod 440 "$SUDOERS_FILE"
 
-# ── Low Power Mode toggle from the bar ────────────────────────────────────────
-echo "--- Low Power Mode toggle ---"
+# ── Low Power Mode and sleep toggles from the bar ─────────────────────────────
+echo "--- Low Power Mode and sleep toggles ---"
 PMSET_SUDOERS="/private/etc/sudoers.d/pmset"
-echo "$(whoami) ALL=(root) NOPASSWD: /usr/bin/pmset -a powermode 0, /usr/bin/pmset -a powermode 1" \
+echo "$(whoami) ALL=(root) NOPASSWD: /usr/bin/pmset -a powermode 0, /usr/bin/pmset -a powermode 1, /usr/bin/pmset -a disablesleep 0, /usr/bin/pmset -a disablesleep 1" \
     | sudo tee "$PMSET_SUDOERS" >/dev/null
 sudo chmod 440 "$PMSET_SUDOERS"
 

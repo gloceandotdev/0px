@@ -7,7 +7,7 @@ source "$CONFIG_DIR/colors.sh"
 
 FONT="DepartureMono Nerd Font"
 SIZE=14.0
-HEIGHT=41
+HEIGHT=39
 
 sketchybar --bar position=top \
                height=$HEIGHT \
@@ -66,6 +66,12 @@ sketchybar --add item layout left \
            --set layout icon.drawing=off \
                         label.padding_left=10 \
                         click_script="$PLUGIN_DIR/layout.sh"
+
+sketchybar --add item sleep left \
+           --set sleep icon.drawing=off \
+                       update_freq=30 \
+                       script="$PLUGIN_DIR/sleep.sh" \
+           --subscribe sleep mouse.clicked system_woke
 
 sketchybar --add item spaces_watcher left \
            --set spaces_watcher drawing=off \
