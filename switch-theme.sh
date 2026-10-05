@@ -38,8 +38,8 @@ case "$MODE" in
         fish -c "set -U rice_theme light" 2>/dev/null
 
         # JankyBorders
-        sed -i '' 's/^borders active_color=.*/borders active_color=0xff807597 inactive_color=0xffd9d2e2 width=4.0 style=square hidpi=on/' "$CONFIG/yabai/yabairc"
+        sed -i '' 's/^borders active_color=.*/borders active_color=0xff6d5b90 inactive_color=0xffd9d2e2 width=4.0 style=square hidpi=on/' "$CONFIG/yabai/yabairc"
         pkill -x borders 2>/dev/null; sleep 0.2
-        nohup /opt/homebrew/bin/borders active_color=0xff807597 inactive_color=0xffd9d2e2 width=4.0 style=square hidpi=on >/dev/null 2>&1 &
+        nohup /opt/homebrew/bin/borders active_color=0xff6d5b90 inactive_color=0xffd9d2e2 width=4.0 style=square hidpi=on >/dev/null 2>&1 &
         ;;
 esac

@@ -3,36 +3,36 @@
 [light]
 # preferred_background: f1ecf7
 fish_color_normal 352c3f
-fish_color_command 6a7c9d
-fish_color_keyword 807597
-fish_color_quote 6e8272
+fish_color_command 4b6697
+fish_color_keyword 6d5b90
+fish_color_quote 536e59
 fish_color_redirection 5c5169
 fish_color_end 5c5169
-fish_color_error a56260
+fish_color_error 9e4c4d
 fish_color_param 352c3f
-fish_color_option 7a98a0
+fish_color_option 518792
 fish_color_comment 81778d --italics
-fish_color_selection --background=dbd6e7
+fish_color_selection --background=ddd6ef
 fish_color_operator 5c5169
-fish_color_escape bc9a78
+fish_color_escape a5794e
 fish_color_autosuggestion 81778d
 fish_color_valid_path --underline
-fish_color_cwd 6a7c9d
-fish_color_cwd_root a56260
+fish_color_cwd 4b6697
+fish_color_cwd_root 9e4c4d
 fish_color_user 352c3f
-fish_color_host 5f828b
-fish_color_host_remote a9825a
-fish_color_status a56260
+fish_color_host 2d717d
+fish_color_host_remote 925f2a
+fish_color_status 9e4c4d
 fish_color_cancel --reverse
-fish_color_search_match --background=e8d5c3
-fish_color_history_current 807597
+fish_color_search_match --background=ecd6c3
+fish_color_history_current 6d5b90
 fish_pager_color_progress 81778d
 fish_pager_color_background
-fish_pager_color_prefix 807597
+fish_pager_color_prefix 6d5b90
 fish_pager_color_completion 352c3f
 fish_pager_color_description 81778d
 fish_pager_color_selected_background --background=d9d2e2
-fish_pager_color_selected_prefix 807597
+fish_pager_color_selected_prefix 6d5b90
 fish_pager_color_selected_completion 352c3f
 fish_pager_color_selected_description 5c5169
 
