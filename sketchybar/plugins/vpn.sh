@@ -14,7 +14,7 @@ if [ "$up" = false ]; then
 fi
 
 if [ "$up" = true ]; then
-  sketchybar --set "$NAME" label.color="$COLOR_FOAM"
+  sketchybar --set "$NAME" label.color="$COLOR_DEW"
 else
   sketchybar --set "$NAME" label.color="$COLOR_MUTED"
 fi

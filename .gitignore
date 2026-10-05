@@ -23,16 +23,20 @@
 !fish/
 !fish/config.fish
 !fish/fish_plugins
+!fish/themes/
+!fish/themes/Meadow.theme
 !fish/functions/
 !fish/functions/fish_prompt.fish
 
 !ghostty/
 !ghostty/config
+!ghostty/themes/
+!ghostty/themes/*
 
 !sketchybar/
 !sketchybar/sketchybarrc
 !sketchybar/colors-dark.sh
-!sketchybar/colors-dawn.sh
+!sketchybar/colors-light.sh
 !sketchybar/plugins/
 !sketchybar/plugins/*.sh
 

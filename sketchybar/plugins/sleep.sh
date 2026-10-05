@@ -15,7 +15,7 @@ if [ "$SENDER" = mouse.clicked ]; then
 fi
 
 if [ "$disabled" = 1 ]; then
-  sketchybar --set "$NAME" label=awake label.color="$COLOR_GOLD"
+  sketchybar --set "$NAME" label=awake label.color="$COLOR_MARIGOLD"
 else
   sketchybar --set "$NAME" label=sleep label.color="$COLOR_TEXT"
 fi

@@ -11,7 +11,7 @@ while IFS=$'\t' read -r idx focus visible windows type; do
     args+=(--set "$item" drawing=on background.drawing=on background.color="$COLOR_FOCUS" label.color="$COLOR_BASE")
     layout="$type"
   elif [ "$visible" = true ]; then
-    args+=(--set "$item" drawing=on background.drawing=on background.color="$COLOR_HL_MED" label.color="$COLOR_TEXT")
+    args+=(--set "$item" drawing=on background.drawing=on background.color="$COLOR_OVERLAY" label.color="$COLOR_TEXT")
   elif [ "$windows" -gt 0 ]; then
     args+=(--set "$item" drawing=on background.drawing=off label.color="$COLOR_TEXT")
   else

@@ -51,7 +51,7 @@ yabai -m signal --add event=window_title_changed  action="sketchybar --trigger w
 yabai -m signal --add event=window_destroyed      action="sketchybar --trigger window_focus"
 
 # Jankyborders
-borders active_color=0xffc4a7e7 inactive_color=0xff6e6a86 width=4.0 style=square hidpi=on
+borders active_color=0xffc1b0e7 inactive_color=0xff3a3245 width=4.0 style=square hidpi=on
 
 # Add padding for Sketchybar on the main display only (height must match sketchybar/sketchybarrc)
 yabai -m config external_bar main:39:0

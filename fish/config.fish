@@ -17,5 +17,7 @@ end
 
 set -U fish_greeting
 
+fish_config theme choose Meadow
+
 # Created by `pipx` on 2026-03-23 17:09:55
 set PATH $PATH /Users/glocean/.local/bin

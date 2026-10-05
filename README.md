@@ -6,7 +6,7 @@
   <img src="assets/0px-dark.png" alt="Desktop">
 </picture>
 
-A flat and square macOS rice with minimal distractions. Inspired by early dwm/i3 rices, uses the Rose Pine colors.
+A flat and square macOS rice with minimal distractions. Inspired by early dwm/i3 rices, uses the [Meadow](https://glocean.dev/meadow/) colors.
 
 Here's an overview of the setup:
 
@@ -19,7 +19,7 @@ Here's an overview of the setup:
 - **Shell**: [fish](https://fishshell.com/)
 - **Resource Monitor**: [btop](https://github.com/aristocratos/btop)
 - **Font**: [Departure Mono](https://departuremono.com/) (Nerd Font build)
-- **Color Scheme**: [Rosé Pine](https://rosepinetheme.com/), main and dawn
+- **Color Scheme**: [Meadow](https://glocean.dev/meadow/), Meadow and Meadow Light
 
 ## Details
 

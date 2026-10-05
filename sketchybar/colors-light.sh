@@ -1,0 +1,18 @@
+# Meadow Light - https://glocean.dev/meadow
+COLOR_NIGHT="0xffe6e0ed"
+COLOR_BASE="0xfff1ecf7"
+COLOR_SURFACE="0xfff8f5fc"
+COLOR_OVERLAY="0xffd9d2e2"
+COLOR_DIM="0xffa9a0b4"
+COLOR_MUTED="0xff81778d"
+COLOR_SUBTLE="0xff5c5169"
+COLOR_TEXT="0xff352c3f"
+COLOR_POPPY="0xffa56260"
+COLOR_MARIGOLD="0xffa9825a"
+COLOR_SAGE="0xff6e8272"
+COLOR_DEW="0xff5f828b"
+COLOR_CORNFLOWER="0xff6a7c9d"
+COLOR_LAVENDER="0xff807597"
+
+# Focused tag, same as the active window border
+COLOR_FOCUS="$COLOR_LAVENDER"

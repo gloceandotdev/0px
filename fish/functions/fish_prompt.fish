@@ -1,23 +1,23 @@
-function fish_prompt --description 'Two-line bracketed prompt, Rosé Pine'
+function fish_prompt --description 'Two-line bracketed prompt, Meadow'
     set -l last_status $status
 
-    # Rosé Pine main / dawn. switch-theme.sh sets $rice_theme to dark or light
+    # Meadow / Meadow Light. switch-theme.sh sets $rice_theme to dark or light
     if test "$rice_theme" = light
-        set -f c_frame 9893a5 # muted
-        set -f c_user 575279 # text
-        set -f c_time 56949f # foam
-        set -f c_cwd 286983 # pine
-        set -f c_git 907aa9 # iris
-        set -f c_ok ea9d34 # gold
-        set -f c_err b4637a # love
+        set -f c_frame a9a0b4 # dim
+        set -f c_user 352c3f # text
+        set -f c_time 5f828b # dew
+        set -f c_cwd 6a7c9d # cornflower
+        set -f c_git 807597 # lavender
+        set -f c_ok 6e8272 # sage
+        set -f c_err a56260 # poppy
     else
-        set -f c_frame 6e6a86
-        set -f c_user e0def4
-        set -f c_time 9ccfd8
-        set -f c_cwd 31748f
-        set -f c_git c4a7e7
-        set -f c_ok f6c177
-        set -f c_err eb6f92
+        set -f c_frame 5f5769
+        set -f c_user ebe7f0
+        set -f c_time 84c7d5
+        set -f c_cwd 9cb8eb
+        set -f c_git c1b0e7
+        set -f c_ok a4bba9
+        set -f c_err d68583
     end
 
     set -l frame (set_color $c_frame)
@@ -31,7 +31,7 @@ function fish_prompt --description 'Two-line bracketed prompt, Rosé Pine'
         set git_seg "$frame-["(set_color $c_git)"$branch$frame]"
     end
 
-    # $ normally, # as root, love when the last command failed
+    # $ normally, # as root, poppy when the last command failed
     set -l sigil '$'
     set -l c_sigil $c_ok
     test (id -u) -eq 0; and set sigil '#'
