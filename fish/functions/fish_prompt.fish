@@ -3,13 +3,13 @@ function fish_prompt --description 'Two-line bracketed prompt, Meadow'
 
     # Meadow / Meadow Light. switch-theme.sh sets $rice_theme to dark or light
     if test "$rice_theme" = light
-        set -f c_frame a9a0b4 # dim
-        set -f c_user 352c3f # text
-        set -f c_time 2d717d # dew
-        set -f c_cwd 4b6697 # cornflower
-        set -f c_git 6d5b90 # lavender
-        set -f c_ok 536e59 # sage
-        set -f c_err 9e4c4d # poppy
+        set -f c_frame ab98a5 # dim
+        set -f c_user 382a3d # text
+        set -f c_time 217584 # dew
+        set -f c_cwd 4a68a0 # cornflower
+        set -f c_git 715c97 # lavender
+        set -f c_ok 507357 # sage
+        set -f c_err b9454c # poppy
     else
         set -f c_frame 5f5769
         set -f c_user ebe7f0
